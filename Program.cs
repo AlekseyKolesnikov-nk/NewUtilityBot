@@ -1,13 +1,11 @@
-﻿using System;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Telegram.Bot;
+using NewUtilityBot.Configuration;
 using NewUtilityBot.Controllers;
 using NewUtilityBot.Services;
 using NewUtilityBot.Новая_папка;
-using NewUtilityBot.Configuration;
+using System.Text;
+using Telegram.Bot;
 
 namespace NewUtilityBot
 {
@@ -38,7 +36,6 @@ namespace NewUtilityBot
 
             // Подключаем контроллеры сообщений и кнопок
             services.AddTransient<DefaultMessageController>();
-            services.AddTransient<VoiceMessageController>();
             services.AddTransient<TextMessageController>();
             services.AddTransient<InlineKeyboardController>();
 

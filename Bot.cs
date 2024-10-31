@@ -6,8 +6,6 @@ using Telegram.Bot.Types.Enums;
 using NewUtilityBot.Controllers;
 using Telegram.Bot.Polling;
 
-
-
 namespace NewUtilityBot
 {
     internal class Bot : BackgroundService
@@ -18,20 +16,17 @@ namespace NewUtilityBot
         // Контроллеры различных видов сообщений
         private InlineKeyboardController _inlineKeyboardController;
         private TextMessageController _textMessageController;
-        private VoiceMessageController _voiceMessageController;
         private DefaultMessageController _defaultMessageController;
 
         public Bot(
             ITelegramBotClient telegramClient,
             InlineKeyboardController inlineKeyboardController,
             TextMessageController textMessageController,
-            VoiceMessageController voiceMessageController,
             DefaultMessageController defaultMessageController)
         {
             _telegramClient = telegramClient;
             _inlineKeyboardController = inlineKeyboardController;
             _textMessageController = textMessageController;
-            _voiceMessageController = voiceMessageController;
             _defaultMessageController = defaultMessageController;
         }
 
@@ -43,7 +38,7 @@ namespace NewUtilityBot
                 new ReceiverOptions() { AllowedUpdates = { } }, // Здесь выбираем, какие обновления хотим получать. В данном случае - разрешены все
                 cancellationToken: stoppingToken);
 
-            Console.WriteLine("Бот запущен.");
+            Console.WriteLine("Бот запущен");
         }
 
         async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
@@ -60,9 +55,6 @@ namespace NewUtilityBot
             {
                 switch (update.Message!.Type)
                 {
-                    case MessageType.Voice:
-                        await _voiceMessageController.Handle(update.Message, cancellationToken);
-                        return;
                     case MessageType.Text:
                         await _textMessageController.Handle(update.Message, cancellationToken);
                         return;
@@ -78,7 +70,7 @@ namespace NewUtilityBot
             var errorMessage = exception switch
             {
                 ApiRequestException apiRequestException
-                    => $"Telegram API Error:\n[{apiRequestException.ErrorCode}]\n{apiRequestException.Message}",
+                    => $"Ошибка Telegram API:\n[{apiRequestException.ErrorCode}]\n{apiRequestException.Message}",
                 _ => exception.ToString()
             };
 

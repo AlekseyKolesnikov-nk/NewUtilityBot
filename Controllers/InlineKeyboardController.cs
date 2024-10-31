@@ -1,9 +1,4 @@
 ﻿using NewUtilityBot.Новая_папка;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -27,19 +22,19 @@ namespace NewUtilityBot.Controllers
                 return;
 
             // Обновление пользовательской сессии новыми данными
-            _memoryStorage.GetSession(callbackQuery.From.Id).LanguageCode = callbackQuery.Data;
+            _memoryStorage.GetSession(callbackQuery.From.Id).OptionCode = callbackQuery.Data;
 
             // Генерим информационное сообщение
-            string languageText = callbackQuery.Data switch
+            string optionText = callbackQuery.Data switch
             {
-                "ru" => " Русский",
-                "en" => " Английский",
+                "txt" => " Текст",
+                "num" => " Целые числа",
                 _ => String.Empty
             };
 
             // Отправляем в ответ уведомление о выборе
             await _telegramClient.SendTextMessageAsync(callbackQuery.From.Id,
-                $"<b>Язык аудио - {languageText}.{Environment.NewLine}</b>" +
+                $"<b>Выбрано - {optionText}.{Environment.NewLine}</b>" +
                 $"{Environment.NewLine}Можно поменять в главном меню.", cancellationToken: ct, parseMode: ParseMode.Html);
         }
     }

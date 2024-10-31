@@ -1,11 +1,6 @@
 ﻿using NewUtilityBot.Models;
 using NewUtilityBot.Новая_папка;
-using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NewUtilityBot.Services
 {
@@ -28,7 +23,7 @@ namespace NewUtilityBot.Services
                 return _sessions[chatId];
 
             // Создаем и возвращаем новую, если такой не было
-            var newSession = new Session() { LanguageCode = "ru" };
+            var newSession = new Session() { OptionCode = "ru" };
             _sessions.TryAdd(chatId, newSession);
             return newSession;
         }
