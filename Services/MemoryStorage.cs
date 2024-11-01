@@ -1,5 +1,5 @@
 ﻿using NewUtilityBot.Models;
-using NewUtilityBot.Новая_папка;
+using NewUtilityBot.Services;
 using System.Collections.Concurrent;
 
 namespace NewUtilityBot.Services
@@ -23,7 +23,7 @@ namespace NewUtilityBot.Services
                 return _sessions[chatId];
 
             // Создаем и возвращаем новую, если такой не было
-            var newSession = new Session() { OptionCode = "ru" };
+            var newSession = new Session() { OptionCode = "txt" };
             _sessions.TryAdd(chatId, newSession);
             return newSession;
         }

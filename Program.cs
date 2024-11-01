@@ -3,7 +3,6 @@ using Microsoft.Extensions.Hosting;
 using NewUtilityBot.Configuration;
 using NewUtilityBot.Controllers;
 using NewUtilityBot.Services;
-using NewUtilityBot.Новая_папка;
 using System.Text;
 using Telegram.Bot;
 
@@ -50,7 +49,5 @@ namespace NewUtilityBot
                 BotToken = "7615351480:AAG916o5vCqGy-2bNuMjRUel6JAdrDzgkAY"
             };
         }
-
     }
 }
-//services.AddSingleton<ITelegramBotClient>(provider => new TelegramBotClient("7615351480:AAG916o5vCqGy-2bNuMjRUel6JAdrDzgkAY"));

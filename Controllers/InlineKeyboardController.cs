@@ -1,4 +1,4 @@
-﻿using NewUtilityBot.Новая_папка;
+﻿using NewUtilityBot.Services;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -34,8 +34,8 @@ namespace NewUtilityBot.Controllers
 
             // Отправляем в ответ уведомление о выборе
             await _telegramClient.SendTextMessageAsync(callbackQuery.From.Id,
-                $"<b>Выбрано - {optionText}.{Environment.NewLine}</b>" +
-                $"{Environment.NewLine}Можно поменять в главном меню.", cancellationToken: ct, parseMode: ParseMode.Html);
+                $"<b>Выбрано - {optionText}{Environment.NewLine}</b>" +
+                $"{Environment.NewLine}Можно поменять в главном меню", cancellationToken: ct, parseMode: ParseMode.Html);
         }
     }
 }

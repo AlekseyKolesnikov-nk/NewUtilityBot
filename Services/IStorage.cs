@@ -1,6 +1,6 @@
 ﻿using NewUtilityBot.Models;
 
-namespace NewUtilityBot.Новая_папка
+namespace NewUtilityBot.Services
 {
     public interface IStorage
     {
